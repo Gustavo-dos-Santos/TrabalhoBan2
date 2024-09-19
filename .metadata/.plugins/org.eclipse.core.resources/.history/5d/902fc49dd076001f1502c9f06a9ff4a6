@@ -13,7 +13,7 @@ import model.ProprietarioModel;
 public class ProprietarioController {
 	public static void create(Usuarios us, Objetos obj,Connection con ) throws SQLException {
 		Proprietario proprietario = new Proprietario(us.getCpf(),obj.getId());
-//		ProprietarioModel.create(proprietario, con);
+		ProprietarioModel.create(proprietario, con);
 		System.out.println("Cadastrado com sucesso");
 	}
 

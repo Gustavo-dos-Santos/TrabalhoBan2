@@ -16,6 +16,11 @@ import model.ObjetosModel;
 public class ObjetosController {
 	public static Objetos cadastrarObjeto(Connection con) throws SQLException {
 	    Scanner input = new Scanner(System.in);
+	    String categoria = "";
+	    String marca = "";
+	    String modelo = "";
+	    String cor = "";
+	    String observacao =  "";
 	    
 	    System.out.println("Informe o número de série:");
 	    String numeroDeSerie = input.nextLine();
@@ -23,41 +28,45 @@ public class ObjetosController {
 	        System.out.println("Erro: O número de série não pode conter espaços.");
 	        return null;
 	    }
-
-	    System.out.println("Informe a marca:");
-	    String marca = input.nextLine();
-	    if (marca.contains(" ")) {
-	        System.out.println("Erro: A marca não pode conter espaços.");
-	        return null;
-	    }
-
-	    System.out.println("Informe o modelo:");
-	    String modelo = input.nextLine();
-	    if (modelo.contains(" ")) {
-	        System.out.println("Erro: O modelo não pode conter espaços.");
-	        return null;
-	    }
-
-	    System.out.println("Informe a cor:");
-	    String cor = input.nextLine();
-	    if (cor.contains(" ")) {
-	        System.out.println("Erro: A cor não pode conter espaços.");
-	        return null;
-	    }
-
-	    System.out.println("Informe a observação:");
-	    String observacao = input.nextLine().trim();
-
-	    System.out.println("Informe a categoria:");
-	    String categoria = input.nextLine();
-	    if (categoria.contains(" ")) {
-	        System.out.println("Erro: A categoria não pode conter espaços.");
-	        return null;
-	    }
+//
+//	    System.out.println("Informe a marca:");
+//	    String marca = input.nextLine();
+//	    if (marca.contains(" ")) {
+//	        System.out.println("Erro: A marca não pode conter espaços.");
+//	        return null;
+//	    }
+//
+//	    System.out.println("Informe o modelo:");
+//	    String modelo = input.nextLine();
+//	    if (modelo.contains(" ")) {
+//	        System.out.println("Erro: O modelo não pode conter espaços.");
+//	        return null;
+//	    }
+//
+//	    System.out.println("Informe a cor:");
+//	    String cor = input.nextLine();
+//	    if (cor.contains(" ")) {
+//	        System.out.println("Erro: A cor não pode conter espaços.");
+//	        return null;
+//	    }
+//
+//	    System.out.println("Informe a observação:");
+//	    String observacao = input.nextLine().trim(); // Remove espaços no início e fim
+//
+//	    System.out.println("Informe a categoria:");
+//	    String categoria = input.nextLine();
+//	    if (categoria.contains(" ")) {
+//	        System.out.println("Erro: A categoria não pode conter espaços.");
+//	        return null;
+//	    }
 	    
-	    Objetos obj = new Objetos(numeroDeSerie, categoria, marca, modelo, cor, observacao);
 
-	    return  ObjetosModel.create(obj, con);
+
+	    input.close();
+
+//	    Objetos obj = new Objetos(numeroDeSerie, categoria, marca, modelo, cor, observacao);
+	    Objetos obj = new Objetos();
+	    return ObjetosModel.create(obj, con);
 	}
 
 

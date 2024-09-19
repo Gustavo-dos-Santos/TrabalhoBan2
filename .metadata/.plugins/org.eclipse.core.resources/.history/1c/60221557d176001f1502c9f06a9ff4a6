@@ -46,7 +46,7 @@ public class ObjetosController {
 	    }
 
 	    System.out.println("Informe a observação:");
-	    String observacao = input.nextLine().trim();
+	    String observacao = input.nextLine().trim(); // Remove espaços no início e fim
 
 	    System.out.println("Informe a categoria:");
 	    String categoria = input.nextLine();
@@ -57,7 +57,8 @@ public class ObjetosController {
 	    
 	    Objetos obj = new Objetos(numeroDeSerie, categoria, marca, modelo, cor, observacao);
 
-	    return  ObjetosModel.create(obj, con);
+	    
+	    return  ObjetosModel.create(obj, con);;
 	}
 
 
