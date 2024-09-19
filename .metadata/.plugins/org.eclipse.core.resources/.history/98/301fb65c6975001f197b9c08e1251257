@@ -1,0 +1,73 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+import entity.Responsavel;
+
+public class ResponsavelModel {
+
+    public static void create(Responsavel r, Connection con) throws SQLException {
+        String sql = "INSERT INTO responsavel ( matricula, ocorrencia_id) VALUES ( ?, ?)";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, r.getAgenteId());
+            st.setInt(2, r.getOcorrenciaId());
+            st.execute();
+        }
+    }
+
+    public static List<Responsavel> listAll(Connection con) throws SQLException {
+        String sql = "SELECT id, matricula, ocorrencia_id FROM responsavel";
+        List<Responsavel> responsaveis = new ArrayList<>();
+        try (PreparedStatement st = con.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+            while (rs.next()) {
+                Responsavel r = new Responsavel();
+                r.setId(rs.getString("id"));
+                r.setAgenteId(rs.getString("matricula"));
+                r.setOcorrenciaId(rs.getInt("ocorrencia_id"));
+                responsaveis.add(r);
+            }
+        }
+        return responsaveis;
+    }
+    
+    public static HashSet<Responsavel> listAllByMatricula(Connection con) throws SQLException {
+        String sql = "SELECT id, matricula, ocorrencia_id FROM responsavel";
+        HashSet<Responsavel> responsaveis = new HashSet<>();
+        try (PreparedStatement st = con.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+            while (rs.next()) {
+                Responsavel r = new Responsavel();
+                r.setId(rs.getString("id"));
+                r.setAgenteId(rs.getString("matricula"));
+                r.setOcorrenciaId(rs.getInt("ocorrencia_id"));
+                responsaveis.add(r);
+            }
+        }
+        return responsaveis;
+    }
+
+    public static void update(Responsavel r, Connection con) throws SQLException {
+        String sql = "UPDATE responsavel SET matricula = ?, ocorrencia_id = ? WHERE id = ?";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, r.getAgenteId());
+            st.setString(2, r.getOcorrenciaId());
+            st.setString(3, r.getId());
+            st.executeUpdate();
+        }
+    }
+
+    public static void delete(String id, Connection con) throws SQLException {
+        String sql = "DELETE FROM responsavel WHERE id = ?";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setString(1, id);
+            st.execute();
+        }
+    }
+}

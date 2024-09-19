@@ -1,0 +1,96 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
+import entity.Objetos;
+import entity.Proprietario;
+import entity.Usuarios;
+import model.ObjetosModel;
+
+public class ObjetosController {
+	public static Objetos cadastrarObjeto(Connection con) throws SQLException {
+		Scanner input = new Scanner(System.in);
+
+        System.out.println("Informe o número de série:");
+        int numeroDeSerie = input.nextInt();
+
+        System.out.println("Informe a marca:");
+        String marca = input.next();
+
+        System.out.println("Informe o modelo:");
+        String modelo = input.next();
+
+        System.out.println("Informe a cor:");
+        String cor = input.next();
+
+        System.out.println("Informe a observação:");
+        String observacao = input.next();
+
+        System.out.println("Informe a categoria:");
+        String categoria = input.next();
+        input.close();
+        
+        Objetos obj = new Objetos(numeroDeSerie,categoria,marca,modelo,cor,observacao);
+
+        return ObjetosModel.create(obj, con);
+	}
+
+	public static Objetos findById(int id, Connection con) throws SQLException {
+		Objetos ob = ObjetosModel.findById(id,con);
+		return ob;
+	}
+
+	public static List<Objetos> listAllByCpf(Usuarios usuario, Connection con) throws SQLException {
+		List<Proprietario> listP = ProprietarioController.listAllByCpf(usuario, con);
+		List<Objetos> listO = ObjetosController.searchAllObFromUser(listP, con);
+		
+		return null;
+	}
+
+	private static List<Objetos> searchAllObFromUser(List<Proprietario> listP, Connection con) throws SQLException {
+	    List<Objetos> objetosList = new ArrayList<>();
+	    
+	    if (listP == null || listP.isEmpty()) {
+	        return objetosList; // Retorna lista vazia se a lista de proprietários estiver vazia ou nula
+	    }
+
+	    // Cria uma StringBuilder para montar a consulta SQL com múltiplos IDs
+	    StringBuilder sql = new StringBuilder("SELECT id, num_serie, categoria, marca, modelo, cor, observacoes FROM objetos WHERE id IN (");
+
+	    // Adiciona os IDs de objetos da lista de proprietários na query
+	    for (int i = 0; i < listP.size(); i++) {
+	        sql.append("?");
+	        if (i < listP.size() - 1) {
+	            sql.append(", ");
+	        }
+	    }
+	    sql.append(")");
+
+	    try (PreparedStatement stmt = con.prepareStatement(sql.toString())) {
+	        // Define os valores dos parâmetros da consulta SQL
+	        for (int i = 0; i < listP.size(); i++) {
+	            stmt.setInt(i + 1, listP.get(i).getObjetoId());
+	        }
+
+	        try (ResultSet rs = stmt.executeQuery()) {
+	            while (rs.next()) {
+	                Objetos obj = new Objetos();
+	                obj.setId(rs.getInt("id"));
+	                obj.setNumserie(rs.getString("num_serie"));
+	                obj.setCategoria(rs.getString("categoria"));
+	                obj.setMarca(rs.getString("marca"));
+	                obj.setModelo(rs.getString("modelo"));
+	                obj.setCor(rs.getString("cor"));
+	                obj.setObservacao(rs.getString("observacoes"));
+
+	                objetosList.add(obj); // Adiciona o objeto à lista
+	            }
+	        }
+	    }
+
+	    return objetosList; // Retorna a lista de objetos
+	}
+}

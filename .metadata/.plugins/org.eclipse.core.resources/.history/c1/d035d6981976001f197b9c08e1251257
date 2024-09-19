@@ -1,0 +1,34 @@
+package Interface;
+
+import java.util.List;
+
+import entity.Objetos;
+import entity.Usuarios;
+
+public class RelatorioUsuarioObjeto {
+	private Usuarios usuario;
+	private List<Objetos> objetos;
+	
+	public Usuarios getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuarios usuario) {
+		this.usuario = usuario;
+	}
+	public List<Objetos> getObjetos() {
+		return objetos;
+	}
+	public void setObjetos(List<Objetos> objetos) {
+		this.objetos = objetos;
+	}
+	public RelatorioUsuarioObjeto(Usuarios usuario, List<Objetos> objetos) {
+		super();
+		this.usuario = usuario;
+		this.objetos = objetos;
+	}
+	public RelatorioUsuarioObjeto() {
+		super();
+	}
+	
+	
+}

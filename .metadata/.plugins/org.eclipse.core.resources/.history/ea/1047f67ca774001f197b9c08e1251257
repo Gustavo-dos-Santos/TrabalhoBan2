@@ -1,0 +1,82 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
+
+import entity.Proprietario;
+
+public class ProprietarioModel {
+
+    public static void create(Proprietario p, Connection con) throws SQLException {
+        String sql = "INSERT INTO proprietario (cpf, objeto_id) VALUES (?, ?)";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setInt(1, p.getCpf());
+            st.setInt(2, p.getObjetoId());
+            st.execute();
+        }
+    }
+
+    public static HashSet<Proprietario> listAll(Connection con) throws SQLException {
+        String sql = "SELECT id, cpf, objeto_id FROM proprietario";
+        HashSet<Proprietario> proprietarios = new HashSet<>();
+        try (PreparedStatement st = con.prepareStatement(sql);
+             ResultSet rs = st.executeQuery()) {
+            while (rs.next()) {
+                Proprietario p = new Proprietario();
+                p.setId(rs.getInt("id"));
+                p.setCpf(rs.getInt("usuario_id"));
+                p.setObjetoId(rs.getInt("objeto_id"));
+                proprietarios.add(p);
+            }
+        }
+        return proprietarios;
+    }
+
+    public static void update(Proprietario p, Connection con) throws SQLException {
+        String sql = "UPDATE proprietario SET cpf = ?, objeto_id = ? WHERE id = ?";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setInt(1, p.getCpf());
+            st.setInt(2, p.getObjetoId());
+            st.setInt(3, p.getId());
+            st.executeUpdate();
+        }
+    }
+
+    public static void delete(int id, Connection con) throws SQLException {
+        String sql = "DELETE FROM proprietario WHERE id = ?";
+        try (PreparedStatement st = con.prepareStatement(sql)) {
+            st.setInt(1, id);
+            st.execute();
+        }
+    }
+
+    public static List<Proprietario> listAllById(int id, Connection con) throws SQLException {
+        List<Proprietario> proprietarios = new ArrayList<>(); // Use ArrayList para inicializar a lista
+
+        String sql = "SELECT id, usuario_id, objeto_id FROM proprietario WHERE id = ?";
+
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Proprietario proprietario = new Proprietario();
+                    proprietario.setId(rs.getInt("id"));
+                    proprietario.setCpf(rs.getInt("cpf"));
+                    proprietario.setObjetoId(rs.getInt("objeto_id"));
+
+                    proprietarios.add(proprietario);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; 
+        }
+        return proprietarios;
+    }
+
+}

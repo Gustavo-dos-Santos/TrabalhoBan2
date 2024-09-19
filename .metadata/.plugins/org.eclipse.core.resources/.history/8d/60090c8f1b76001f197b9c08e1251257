@@ -1,0 +1,16 @@
+package controller;
+
+import java.sql.Connection;
+
+import entity.Relatorios;
+import model.AdminModel;
+
+public class AdminController {
+
+	public static Relatorios RelatorioUsuarioObjeto(String cpf, Connection con) {
+		UsuariosController.findByCpf(cpf, con);
+		
+		return AdminModel.relatorioUsuarioObjeto(cpf,con);
+	}
+
+}

@@ -1,0 +1,19 @@
+package controller;
+
+import java.sql.Connection;
+import java.util.Scanner;
+
+public class OcorrenciasController {
+    private static Scanner input = new Scanner(System.in);  
+
+	public static void create(int objetoId, Connection con) {
+		System.out.println("Cadastrar ocorrencia");
+		System.out.println("Data:");
+		System.out.println("Rua: ");
+		System.out.println("Bairro: ");
+		System.out.println("Numero: ");
+		System.out.println("Descrição:");
+		System.out.println("Providencias:");
+	}
+
+}

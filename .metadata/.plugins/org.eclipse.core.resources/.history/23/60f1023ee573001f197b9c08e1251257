@@ -1,0 +1,35 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashSet;
+
+import entity.Objetos;
+import entity.Proprietario;
+import entity.Usuarios;
+import model.ProprietarioModel;
+
+public class ProprietarioController {
+	public static void create(Usuarios us, Objetos obj,Connection con ) throws SQLException {
+		Proprietario proprietario = new Proprietario(us.getCpf(),obj.getId());
+		ProprietarioModel.create(proprietario, con);
+		System.out.println("Cadastrado com sucesso");
+	}
+
+	public static void delete(int id, Connection con) throws SQLException {
+		ProprietarioModel.delete(id, con);
+		System.out.println("Deletado com sucesso");
+	}
+	
+	public static void listAll(Usuarios usuario, Connection con) throws SQLException {
+	    HashSet<Proprietario> list = ProprietarioModel.listAllById(usuario.getCpf(), con);
+	    Objetos obj = ObjetosController.findById(usuario.getCpf(),con);
+	    
+	    list.forEach((p) -> {
+	        System.out.println("ID: " + p.getId());
+	        System.out.println("Nome: " + p.getNome());
+	        System.out.println("CPF: " + p.getCpf());
+	        System.out.println("----------------------------");
+	    });
+	}
+}

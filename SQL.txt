@@ -1,0 +1,127 @@
+
+CREATE DATABASE ban2;
+
+CREATE TABLE agentes (
+    matricula INT NOT NULL ,
+    nome VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (matricula)
+);
+
+CREATE TABLE usuarios (
+    cpf VARCHAR(50) NOT NULL UNIQUE,
+    nome VARCHAR(50) NOT NULL,
+    dtnasc VARCHAR(50) NOT NULL,
+    telefone VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (cpf)
+);
+
+CREATE TABLE objetos (
+    id INT NOT NULL AUTO_INCREMENT,
+    num_serie VARCHAR(50) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    modelo VARCHAR(50) NOT NULL,
+    cor VARCHAR(50) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    observacoes VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE proprietario (
+    id INT NOT NULL AUTO_INCREMENT,
+    cpf VARCHAR(50) NOT NULL,
+    objeto_id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE ocorrencias (
+    id INT NOT NULL AUTO_INCREMENT,
+    data VARCHAR(50) NOT NULL,
+    rua VARCHAR(50) NOT NULL,
+    numero VARCHAR(50) NOT NULL ,
+    bairro VARCHAR(50) NOT NULL,
+    descricao VARCHAR(255),
+    providencias VARCHAR(255),
+    proprietario_id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE responsavel (
+    id INT NOT NULL AUTO_INCREMENT,
+    matricula INT NOT NULL,
+    ocorrencia_id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+
+INSERT INTO usuarios (cpf, nome, dtnasc, telefone, email, password) VALUES
+('12345678901', 'João Silva', '1985-05-10', '11987654321', 'joao@example.com', '123456'),
+('23456789012', 'Maria Oliveira', '1990-03-25', '21987654322', 'maria@example.com', 'abcdef'),
+('34567890123', 'Carlos Souza', '1975-07-15', '31987654323', 'carlos@example.com', 'qwerty'),
+('45678901234', 'Ana Pereira', '2000-01-20', '41987654324', 'ana@example.com', '654321'),
+('56789012345', 'Pedro Lima', '1995-06-30', '51987654325', 'pedro@example.com', 'zxcvbn'),
+('67890123456', 'Lucia Costa', '1982-12-12', '61987654326', 'lucia@example.com', 'asdfgh'),
+('78901234567', 'Bruno Mendes', '1998-11-05', '71987654327', 'bruno@example.com', 'poiuyt'),
+('89012345678', 'Carla Silva', '1987-09-23', '81987654328', 'carla@example.com', 'mnbvcx'),
+('90123456789', 'Eduardo Braga', '1992-04-14', '91987654329', 'eduardo@example.com', 'lkjhgf'),
+('01234567890', 'Fernanda Teixeira', '1999-08-02', '11987654330', 'fernanda@example.com', '098765');
+
+INSERT INTO objetos (id, num_serie, marca, modelo, cor, categoria, observacoes) VALUES
+(1, 'OBJ001', 'Caloi', 'Elite', 'Preta', 'Bicicleta', 'Mountain bike'),
+(2, 'OBJ002', 'Apple', 'iPhone 12', 'Branco', 'Celular', 'Sem capa'),
+(3, 'OBJ003', 'Samsung', 'Galaxy S20', 'Preto', 'Celular', 'Com película'),
+(4, 'OBJ004', 'Lenovo', 'ThinkPad', 'Preto', 'Notebook', 'Tela quebrada'),
+(5, 'OBJ005', 'HP', 'Pavilion', 'Cinza', 'Notebook', 'Com adesivos'),
+(6, 'OBJ006', 'Giant', 'Defy', 'Azul', 'Bicicleta', 'De estrada'),
+(7, 'OBJ007', 'Dell', 'XPS 13', 'Prata', 'Notebook', 'Sem bateria'),
+(8, 'OBJ008', 'Xiaomi', 'Mi 11', 'Verde', 'Celular', 'Arranhado na traseira'),
+(9, 'OBJ009', 'Cannondale', 'Trail 7', 'Verde', 'Bicicleta', 'Suspensão danificada'),
+(10, 'OBJ010', 'Asus', 'ZenBook', 'Preto', 'Notebook', 'Carregador perdido'),
+(11, 'OBJ011', 'LG', 'G8', 'Vermelho', 'Celular', 'Sem película'),
+(12, 'OBJ012', 'Trek', 'Marlin 5', 'Amarelo', 'Bicicleta', 'Bicicleta de montanha'),
+(13, 'OBJ013', 'Acer', 'Swift 3', 'Cinza', 'Notebook', 'Pouco uso');
+
+INSERT INTO proprietario (id, cpf, objeto_id) VALUES
+(1, '12345678901', 1),
+(2, '23456789012', 2),
+(3, '34567890123', 3),
+(4, '45678901234', 4),
+(5, '56789012345', 5),
+(6, '67890123456', 6),
+(7, '78901234567', 7),
+(8, '89012345678', 8),
+(9, '90123456789', 9),
+(10, '01234567890', 10),
+(11, '01234567890', 11),
+(12, '01234567890', 12),
+(13, '01234567890', 13);
+
+INSERT INTO agentes (matricula, nome, password) VALUES
+(101, 'Agente Marcos', '123456'),
+(102, 'Agente Clara', 'abcdef'),
+(103, 'Agente João', 'qwerty'),
+(104, 'Agente Luiza', '654321'),
+(105, 'Agente Rafael', 'zxcvbn');
+
+INSERT INTO ocorrencias (id, data, rua, numero, bairro, descricao, providencias, proprietario_id) VALUES
+(1, '2023-05-15', 'Rua das Flores', '120', 'Centro', 'Furto de bicicleta', 'Investigação em andamento', 1),
+(2, '2023-06-20', 'Av. Paulista', '1000', 'Bela Vista', 'Furto de celular', 'Providência tomada', 2),
+(3, '2023-07-25', 'Rua XV de Novembro', '555', 'Centro', 'Furto de notebook', 'Providência pendente', 4),
+(4, '2023-08-30', 'Rua das Laranjeiras', '300', 'Botafogo', 'Furto de bicicleta', 'Caso arquivado', 6),
+(5, '2023-09-10', 'Rua do Comércio', '456', 'Comercial', 'Furto de notebook', 'Investigação aberta', 13),
+(6, '2023-10-01', 'Rua São João', '32', 'Liberdade', 'Furto de celular', 'Caso fechado', 12),
+(7, '2023-10-05', 'Rua da Paz', '90', 'Centro', 'Furto de bicicleta', 'Em análise', 13);
+
+INSERT INTO responsavel (matricula, ocorrencia_id) VALUES
+(101, 1),
+(102, 2),
+(103, 3),
+(104, 4),
+(105, 5),
+(101, 6),
+(102, 7);
+
+

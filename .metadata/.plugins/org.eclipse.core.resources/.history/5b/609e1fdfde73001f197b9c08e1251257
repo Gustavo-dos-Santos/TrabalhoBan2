@@ -1,0 +1,51 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import entity.Usuarios;
+import model.UsuariosModel;
+
+public class UsuarioController {
+	public static void Register(Connection con) throws SQLException {
+
+        Usuarios us = new Usuarios();
+        
+        System.out.println("Nome: ");
+        String nome = input.next();
+
+        System.out.println("CPF: ");
+        int cpf = input.nextInt();
+       
+
+  
+        System.out.println("Senha : ");
+        String pass = input.next();
+        
+
+ 
+        System.out.println("Data de Nascimento: ");
+        String dts = input.next();
+       
+
+   
+        System.out.println("Telefone: ");
+        String tel = input.next();
+       
+
+
+        System.out.println("Email: ");
+        String email = input.next();
+        
+        us.setCpf(cpf);
+        us.setDtNasc(dts);
+        us.setEmail(email);
+        us.setNome(nome);
+        us.setPassword(pass);
+        us.setNome(tel);
+            
+
+        UsuariosModel.create(us, con);
+        System.out.println("Usuário registrado com sucesso.");
+    }
+}

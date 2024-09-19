@@ -1,0 +1,25 @@
+Esse é o trabalho de ban 2
+o projeto foi feito com MySQL e Java utilizando a IDE Eclipse
+para baixar o MYSQL voce precisa entrar nesse site e colocar o seu sistema operacional, baixar, executar e configurar
+Senha do usuário root = admin
+
+Usuário  = root
+senha = admin
+https://dev.mysql.com/downloads/mysql/
+
+recomendo utilizar o MYSQL Workbench
+para instala é necessário entrar no site e colocar o seu sistema operacional, baixar e executar
+https://dev.mysql.com/downloads/workbench/
+
+e para rodar o MySQL no projeto é necessário instalar o zip o drive, eu ja coloquei no projeto, mas se estiver dando problema com isso, é necessário instalar o drive, descompactar e jogar um arquivo(mysql-connector-j-###.jar) dessa pasta para o root do projeto
+https://dev.mysql.com/downloads/connector/j/
+
+abra o MYSQL WorkBench, acesse o banco, abra um arquivo de execução, coloque o texto SQL dentro do arquivo e execute
+
+Agora voce tem que baixar e instalar o java
+
+Vá para a página de downloads do JDK da Oracle: https://www.oracle.com/java/technologies/downloads/?er=221886
+
+Baixe o eclipse - https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2024-09/R/eclipse-inst-jre-win64.exe
+
+Agora é so abrir e executar o projeto no Eclipse.

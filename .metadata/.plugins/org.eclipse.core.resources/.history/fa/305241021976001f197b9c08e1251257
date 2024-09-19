@@ -1,0 +1,11 @@
+package Interface;
+
+import java.util.List;
+
+import entity.Objetos;
+import entity.Usuarios;
+
+public class RelatorioUsuarioObjeto {
+	private Usuarios usuario;
+	private List<Objetos> objetos;
+}

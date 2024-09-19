@@ -1,0 +1,19 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+import entity.Relatorios;
+import entity.Usuarios;
+import model.AdminModel;
+
+public class AdminController {
+
+	public static Relatorios RelatorioUsuarioObjeto(String cpf, Connection con) throws SQLException {
+		Usuarios us = UsuariosController.findByCpf(cpf, con);
+		List<Objetos> objs = ObjetosController.listAllByCpf(us, con);
+		
+		return AdminModel.relatorioUsuarioObjeto(cpf,con);
+	}
+
+}

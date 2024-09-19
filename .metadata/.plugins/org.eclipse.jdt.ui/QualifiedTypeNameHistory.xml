@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.ClassNotFoundException"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.util.logging.Logger"/>
+    <fullyQualifiedTypeName name="java.util.logging.Level"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="db.Conexao"/>
+    <fullyQualifiedTypeName name="controller.LoginController"/>
+    <fullyQualifiedTypeName name="controller.PropriedadeController"/>
+    <fullyQualifiedTypeName name="java.lang.annotation.ElementType"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="model.ObjetosModel"/>
+    <fullyQualifiedTypeName name="model.ProprietarioModel"/>
+    <fullyQualifiedTypeName name="entity.Proprietario"/>
+    <fullyQualifiedTypeName name="controller.ProprietarioController"/>
+    <fullyQualifiedTypeName name="entity.Objetos"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="entity.Responsavel"/>
+    <fullyQualifiedTypeName name="model.OcorrenciasModel"/>
+    <fullyQualifiedTypeName name="controller.ResponsavelController"/>
+    <fullyQualifiedTypeName name="model.ResponsavelModel"/>
+    <fullyQualifiedTypeName name="controller.AdminController"/>
+    <fullyQualifiedTypeName name="model.AdminModel"/>
+    <fullyQualifiedTypeName name="controller.UsuariosController"/>
+    <fullyQualifiedTypeName name="model.UsuariosModel"/>
+    <fullyQualifiedTypeName name="controller.ObjetosController"/>
+    <fullyQualifiedTypeName name="entity.Relatorios"/>
+    <fullyQualifiedTypeName name="entity.Agentes"/>
+    <fullyQualifiedTypeName name="controller.AgenteController"/>
+    <fullyQualifiedTypeName name="controller.OcorrenciasController"/>
+    <fullyQualifiedTypeName name="entity.Ocorrencias"/>
+    <fullyQualifiedTypeName name="model.AgentesModel"/>
+    <fullyQualifiedTypeName name="entity.Usuarios"/>
+</qualifiedTypeNameHistroy>

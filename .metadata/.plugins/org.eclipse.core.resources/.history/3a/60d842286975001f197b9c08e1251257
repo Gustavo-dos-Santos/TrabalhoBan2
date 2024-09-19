@@ -1,0 +1,16 @@
+package controller;
+
+import java.sql.Connection;
+
+import entity.Agentes;
+import entity.Responsavel;
+import model.ResponsavelModel;
+
+public class ResponsavelController {
+
+	public static void create(Agentes agente, int ocorrenciaId, Connection con) {
+		Responsavel res = new Responsavel(agente.getMatricula(), ocorrenciaId);
+		ResponsavelModel.create(res, con);
+	}
+
+}

@@ -1,0 +1,6 @@
+package Interface;
+
+public class RelatorioUsuarioObjeto {
+	private Usuario usuario;
+	private List<Objetos> objetos;
+}

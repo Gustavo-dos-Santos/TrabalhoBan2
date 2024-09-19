@@ -1,0 +1,8 @@
+2024-09-14 14:12:31,514 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-09-15 23:06:12,649 [Worker-248: Creating project "trabalhoBan2"] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2024-09-15 23:06:13,084 [Worker-248: Creating project "trabalhoBan2"] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.trabalhoBan2:trabalhoBan2:0.0.1-SNAPSHOT @ C:\Users\Francisco\Desktop\maven\pom.xml.
+2024-09-15 23:06:13,450 [Worker-262: Building] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2024-09-15 23:06:29,368 [Worker-260: Building] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2024-09-15 23:07:00,410 [Worker-260: Building] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2024-09-15 23:07:04,817 [Worker-262: Building] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled
+2024-09-15 23:35:38,935 [Worker-259: Updating Maven Dependencies] ERROR o.e.m.c.i.URLConnectionCaches - Unexpected URLConnection defaultUseCaches enabled

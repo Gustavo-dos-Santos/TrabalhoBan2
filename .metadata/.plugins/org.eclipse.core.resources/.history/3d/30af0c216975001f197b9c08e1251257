@@ -1,0 +1,36 @@
+package entity;
+
+public class Responsavel {
+
+	private String id;
+	private String matricula;
+	private String ocorrenciaId;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getAgenteId() {
+		return matricula;
+	}
+	public void setAgenteId(String agenteId) {
+		this.matricula = agenteId;
+	}
+	public String getOcorrenciaId() {
+		return ocorrenciaId;
+	}
+	public void setOcorrenciaId(String ocorrenciaId) {
+		this.ocorrenciaId = ocorrenciaId;
+	}
+	public Responsavel( String agenteId, String ocorrenciaId) {
+		super();
+		this.matricula = agenteId;
+		this.ocorrenciaId = ocorrenciaId;
+	}
+	public Responsavel() {
+		super();
+	}
+	
+	
+}

@@ -1,0 +1,37 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import entity.Objetos;
+import model.ObjetosModel;
+
+public class ObjetosController {
+	public static Objetos cadastrarObjeto(Connection con) throws SQLException {
+		Scanner input = new Scanner(System.in);
+
+        System.out.println("Informe o número de série:");
+        String numeroDeSerie = input.nextLine();
+
+        System.out.println("Informe a marca:");
+        String marca = input.nextLine();
+
+        System.out.println("Informe o modelo:");
+        String modelo = input.nextLine();
+
+        System.out.println("Informe a cor:");
+        String cor = input.nextLine();
+
+        System.out.println("Informe a observação:");
+        String observacao = input.nextLine();
+
+        System.out.println("Informe a categoria:");
+        String categoria = input.nextLine();
+        input.close();
+        
+        Objetos obj = new Objetos(numeroDeSerie,categoria,marca,modelo,cor,observacao);
+
+        return ObjetosModel.create(obj, con);
+	}
+}

@@ -1,0 +1,67 @@
+package controller;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+
+import entity.Ocorrencias;
+import entity.Proprietario;
+import entity.Usuarios;
+import model.OcorrenciasModel;
+
+public class OcorrenciasController {
+    private static Scanner input = new Scanner(System.in);  
+
+	public static void create(int objetoId, Connection con) throws SQLException {
+		Proprietario p = ProprietarioController.findByObjetoId(objetoId,con);
+		
+		if(p != null) {
+		System.out.println("Cadastrar ocorrencia");
+		System.out.println("Data:");
+		String data = input.next();
+		System.out.println("Rua: ");
+		String rua = input.next();
+		System.out.println("Bairro: ");
+		String bairro = input.next();
+		System.out.println("Numero: ");
+		String numero = input.next();
+		System.out.println("Descrição:");
+		String descricao = input.next();
+		
+		Ocorrencias oc = new Ocorrencias(p.getId(),data,rua,bairro,descricao,"",numero);
+		OcorrenciasModel.create(oc, con);
+		System.out.println("Cadastrado com sucesso");
+		}else {
+			System.out.println("Erro, tente novamente mais tarde");
+		}
+	}
+
+	public static List<Ocorrencias> listAllByCpf(Usuarios usuario, Connection con) throws SQLException {
+		List<Ocorrencias> listOc = OcorrenciasModel.findOcorrenciasByCpf(usuario.getCpf(), con);
+		
+		return listOc;
+	}
+
+	public static void delete(int ocorrenciaId, Connection con) throws SQLException {
+		OcorrenciasModel.delete(ocorrenciaId, con);
+		System.out.println("Deletado com sucesso");
+	}
+
+	public static List<Ocorrencias> deleteAllByCpf(Usuarios usuario, Connection con) throws SQLException {
+		List<Ocorrencias> listOc = OcorrenciasModel.findOcorrenciasByCpf(usuario.getCpf(), con);
+		listOc.forEach((ocorrencia)->{
+			System.out.println(ocorrencia.getProprietario_id());
+			System.out.println(ocorrencia.getId());
+
+			try {
+				OcorrenciasModel.delete(ocorrencia.getId(), con);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
+		return null;
+	}
+
+}

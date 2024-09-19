@@ -1,0 +1,13 @@
+package controller;
+
+import java.sql.Connection;
+
+import entity.Relatorios;
+
+public class AdminController {
+
+	public static Relatorios RelatorioUsuarioObjeto(String cpf, Connection con) {
+		
+	}
+
+}
